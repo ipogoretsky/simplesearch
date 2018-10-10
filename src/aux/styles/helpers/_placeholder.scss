@@ -1,0 +1,27 @@
+@mixin placeholder($font-size, $color) {
+
+  &::placeholder {
+    letter-spacing: normal;
+    color: $color !important;
+    font-size: $font-size !important;
+    opacity: 0.5 !important;
+  }
+
+  &::-ms-input-placeholder {
+    letter-spacing: normal;
+    color: $color !important;
+    font-size: $font-size !important;
+    opacity: 0.5 !important;
+  }
+
+  &:-ms-input-placeholder {
+    letter-spacing: normal !important;
+    color: $color !important;
+    font-size: $font-size !important;
+    opacity: 0.5 !important;
+  }
+
+  &::-webkit-input-placeholder {
+    line-height: normal !important;
+  }
+}

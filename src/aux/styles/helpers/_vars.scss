@@ -1,0 +1,26 @@
+@import "functions.scss";
+
+/* Typography */
+$font-size: 1rem * 0.9;
+
+/* Colors */
+$text-color: #000;
+$placeholder-color: rgba($text-color, 0.5);
+
+$blue: #19b5ff;
+$primary: $blue;
+$link-color: darken($primary, 10%);
+$border-radius: rem(4);
+$box-shadow-color: rgba(#3C4248, 0.26);
+
+/* Form */
+$input-font-size: $font-size;
+$input-padding-y: .375rem;
+$input-padding-x: .75rem;
+$input-border-border-color: #b6bbc2;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: 0 0 0.9rem * 0.31 rem(1) rgba($primary, .25);
+$input-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+$button-text-color: white;
+$button-bg-color: $primary;

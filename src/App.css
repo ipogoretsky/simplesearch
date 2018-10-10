@@ -1,8 +1,170 @@
+/* Typography */
+/* Colors */
+/* Form */
+/* Columns */
+/* Rows */
+input[type='text'] {
+  font-size: 0.9rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #b6bbc2;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+  input[type='text']::placeholder {
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.5) !important;
+    font-size: 0.8rem !important;
+    opacity: 0.5 !important; }
+  input[type='text']::-ms-input-placeholder {
+    letter-spacing: normal;
+    color: rgba(0, 0, 0, 0.5) !important;
+    font-size: 0.8rem !important;
+    opacity: 0.5 !important; }
+  input[type='text']:-ms-input-placeholder {
+    letter-spacing: normal !important;
+    color: rgba(0, 0, 0, 0.5) !important;
+    font-size: 0.8rem !important;
+    opacity: 0.5 !important; }
+  input[type='text']::-webkit-input-placeholder {
+    line-height: normal !important; }
+  input[type='text']:focus {
+    outline: none;
+    border-color: #19b5ff;
+    box-shadow: 0 0 0.279rem 0.0625rem rgba(25, 181, 255, 0.25); }
+  input[type='text']:-webkit-autofill {
+    /* overwrite bg */
+    -webkit-box-shadow: 0 0 0 2rem white inset !important;
+    background: transparent; }
+
+button {
+  font-size: 0.9rem;
+  padding: 0.375rem 1.5rem;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  color: white;
+  border: 0.0625rem solid #19b5ff;
+  background: #19b5ff; }
+  button:active {
+    background: #00adff;
+    border-color: #00adff; }
+
+.centered {
+  text-align: center; }
+
+/* Typography */
+/* Colors */
+/* Form */
+/* Columns */
+/* Rows */
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif; }
+  font-size: 0.9rem;
+  background: #f5f7f8;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
 
+a,
+a:visited {
+  color: #009be5;
+  text-decoration: none; }
+
+.page {
+  width: 50%;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  box-shadow: 0 1.25rem 2.5rem rgba(60, 66, 72, 0.26);
+  position: relative; }
+  .page-badge {
+    top: 0;
+    left: 1rem;
+    width: 5rem;
+    height: 4.6875rem;
+    background: #d8dde6;
+    position: absolute; }
+  .page-caption {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: normal; }
+
+.search {
+  width: 100%; }
+  .search-control {
+    display: flex;
+    flex-flow: nowrap row; }
+    .search-control-input {
+      flex: 1 1 auto; }
+    .search-control-button {
+      margin-left: 0.3rem;
+      width: auto;
+      flex: 0 0 auto; }
+  .search-last {
+    padding: 0;
+    margin: 1rem 0;
+    text-align: left;
+    list-style-type: none; }
+    .search-last li {
+      display: inline-block;
+      padding-left: 1rem; }
+      .search-last li:first-child {
+        padding-left: 0; }
+
+.shadow-box {
+  padding: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.625rem rgba(60, 66, 72, 0.26); }
+
+.user-preview {
+  display: flex;
+  flex-flow: nowrap row;
+  padding: 0.8rem 0;
+  border-bottom: 0.0625rem solid rgba(112, 112, 112, 0.2); }
+  .user-preview:first-child {
+    padding-top: 0; }
+  .user-preview:last-child {
+    padding-bottom: 0;
+    border-bottom: none; }
+  .user-preview-basic-info {
+    width: auto;
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: nowrap row;
+    width: 60%; }
+    .user-preview-basic-info img {
+      width: auto;
+      flex: 0 0 auto;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      box-shadow: 0 0.1875rem 0.375rem rgba(60, 66, 72, 0.26); }
+    .user-preview-basic-info > div {
+      flex: 1 1 auto;
+      margin: 0.3rem 0 0 0.6rem;
+      display: inline-block; }
+      .user-preview-basic-info > div a {
+        color: black;
+        cursor: pointer;
+        font-size: 1.125rem;
+        margin: 0.2rem 0 0; }
+      .user-preview-basic-info > div span {
+        line-height: 1;
+        font-size: 1rem;
+        font-weight: 300;
+        opacity: 0.6; }
+  .user-preview-repos {
+    width: auto;
+    flex: 0 0 auto;
+    width: 40%; }
+    .user-preview-repos > div {
+      margin: 0.2rem 0; }
+      .user-preview-repos > div:first-child {
+        margin: 0 0 0.5rem 0;
+        color: rgba(112, 112, 112, 0.7);
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem; }
+
+/*  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 .App {
   text-align: center; }
 
