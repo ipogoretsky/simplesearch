@@ -1,0 +1,30 @@
+{
+  "name": "helmes-github-search",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "node-sass-chokidar": "^1.3.4",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts-ts": "3.1.0",
+    "superagent": "^4.0.0-beta.5"
+  },
+  "scripts": {
+    "start": "npm run _build:css && npm run _start",
+    "build": "npm run _build:css && npm run _build:js",
+    "watch:css": "npm run _build:css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject",
+    "_start": "PORT=4000 react-scripts-ts start",
+    "_build:js": "react-scripts-ts build",
+    "_build:css": "node-sass-chokidar src/ -o src/"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.5",
+    "@types/node": "^10.11.6",
+    "@types/react": "^16.4.16",
+    "@types/react-dom": "^16.0.9",
+    "@types/superagent": "^3.8.4",
+    "typescript": "^3.1.2"
+  }
+}
