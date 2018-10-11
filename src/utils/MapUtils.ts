@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 
 const jsonMetadataKey = "jsonProperty";
-const valueConvert = "valueConvert";
 
 export interface IJsonMetaData<T> {
   name?: string,
@@ -83,19 +82,11 @@ export default class MapUtils {
             } else {
               let metadata = this.getJsonProperty(instance, prop);
 
-              // if (!metadata)
-              //   console.error("Reflect metadata error:", prop, curJProp);
-
               for (let i = 0; i < curJProp.length; i++) {
                 try {
                   let nestedObj = this.deserialize(metadata.clazz!, json[prop][i]);
                   instance[prop].push(nestedObj);
                 } catch (e) {
-                  //   console.log('MapUtils.deserialize error:',
-                  //     'curJPorop:', curJProp,
-                  //     'prop:', prop,
-                  //     'metadata:', metadata,
-                  //     'error:', e);
                 }
               }
             }
@@ -103,17 +94,9 @@ export default class MapUtils {
         } else {
           let metadata = this.getJsonProperty(instance, prop);
 
-          // if (!metadata)
-          //   console.error("Reflect metadata error:", prop);
-
           try {
             instance[prop] = this.deserialize(metadata.clazz!, json[prop]);
           } catch (e) {
-            // console.log('MapUtils.deserialize error:',
-            //   'curJProp:', curJProp,
-            //   'prop:', prop,
-            //   'metadata:', metadata,
-            //   'error:', e);
           }
         }
       }
