@@ -14,7 +14,7 @@ class LocalDataHelper {
   }
 
   public addSearchText (s: string | undefined) {
-    if (!s || this.data.lastSearch.indexOf(s) == 0)
+    if (!s || this.data.lastSearch.indexOf(s) != -1)
       return;
 
     this.data.lastSearch = [s, ...this.data.lastSearch].slice(0, 3);

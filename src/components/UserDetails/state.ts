@@ -3,7 +3,7 @@ import UserDetails from "./UserDetails";
 
 export default {
   name: RouterState.UserDetails,
-  url: '/user/:login',
+  url: '/:login',
   component: UserDetails,
   resolve: [{
     token: 'login',

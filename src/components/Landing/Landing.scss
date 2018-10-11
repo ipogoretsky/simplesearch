@@ -2,8 +2,75 @@
 
 .search-result {
   h4 {
-    font-size: 1.2 * $font-size;
+    font-size: fontSize(1.2);
     margin: 2rem 1rem 1rem;
     font-weight: normal;
+  }
+}
+
+.search-result-user-preview {
+  @include flex-cols-nowrap;
+  padding: 0.8rem 0;
+  border-bottom: rem(1) solid rgba(#707070, 0.2);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  &-basic-info {
+    @include flex-col-width-auto;
+    @include flex-cols-nowrap;
+    width: 60%;
+
+    img {
+      @include flex-col-width-auto;
+
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      box-shadow: 0 rem(3) rem(6) $box-shadow-color;
+    }
+
+    & > div {
+      @include flex-col-width-fill;
+      margin: 0.3rem 0 0 0.6rem;
+      display: inline-block;
+
+      a {
+        color: black;
+        cursor: pointer;
+        font-size: rem(18);
+        margin: 0.2rem 0 0;
+      }
+
+      span {
+        line-height: 1;
+        font-size: rem(16);
+        font-weight: 300;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &-repos {
+    @include flex-col-width-auto;
+    width: 40%;
+
+    & > div {
+      margin: 0.2rem 0;
+
+      &:first-child {
+        margin: 0 0 0.5rem 0;
+        color: rgba(#707070, 0.7);
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+      }
+    }
   }
 }

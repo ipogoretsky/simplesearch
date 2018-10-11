@@ -73,15 +73,15 @@ export default class Landing extends React.Component<IProps, IState> {
         <h4>GitHub most popular users</h4>
         <div className="shadow-box">
 
-          {!this.state.dataModel.users && !this.state.isPendingSearch &&
+          {!this.state.dataModel.users.length && !this.state.isPendingSearch &&
           <div><h5>No Result</h5></div>
           }
 
           {this.state.dataModel.users.map((user: UserModel) => {
             return (
-              <div key={user.id} className='user-preview'>
+              <div key={user.id} className='search-result-user-preview'>
 
-                <div className='user-preview-basic-info'>
+                <div className='search-result-user-preview-basic-info'>
                   <img src={user.avatar_url}/>
                   <div>
                     <UIRouterLink to={RouterState.UserDetails} params={{login: user.login}}>
@@ -91,7 +91,7 @@ export default class Landing extends React.Component<IProps, IState> {
                   </div>
                 </div>
 
-                <div className='user-preview-repos'>
+                <div className='search-result-user-preview-repos'>
                   <div>REPOSITORIES</div>
 
                   {this.state.dataModel.repos[user.id].map((rep: RepoModel, i: number) => {

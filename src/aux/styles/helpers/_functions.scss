@@ -1,3 +1,5 @@
+@import "vars.scss";
+
 $browser-context: 16;
 
 @function rem($pixels, $context: $browser-context) {
@@ -24,8 +26,6 @@ $browser-context: 16;
   @return $pixels / $context * 1em;
 }
 
-@function gray($key: 100) {
-  @return map-get($grays, '' + $key);
+@function fontSize($scale:1){
+  @return $scale * $font-size;
 }
-
-   
