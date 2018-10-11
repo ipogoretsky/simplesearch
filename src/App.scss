@@ -62,7 +62,12 @@ a:visited {
 }
 
 .shadow-box {
-  padding: 2rem;
+  padding: 1rem;
+
+  @include resp-md {
+    padding: 2rem;
+  }
+
   border-radius: $border-radius;
   box-shadow: 0 0 rem(10) $box-shadow-color;
 }

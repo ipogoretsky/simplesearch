@@ -32,7 +32,12 @@
 
 /* Default mode */
 .user-preview.user-preview-default {
-  @include flex-cols-nowrap;
+  @include flex-cols-wrap;
+
+  @include resp-md {
+    @include flex-cols-nowrap;
+  }
+
   padding: 0.8rem 0;
   border-bottom: rem(1) solid rgba(#707070, 0.2);
 
@@ -48,7 +53,11 @@
   .user-preview-basic-info {
     @include flex-cols-nowrap;
     @include flex-col-width-auto;
-    width: 60%;
+    width: 100%;
+
+    @include resp-md {
+      width: 60%;
+    }
 
     img {
       @include flex-col-width-auto;
@@ -57,10 +66,16 @@
     & > div {
       @include flex-col-width-fill;
     }
+  }
 
-    .user-preview-items {
-      @include flex-col-width-auto;
+  .user-preview-items {
+    margin-top: 1rem;
+    @include flex-col-width-auto;
+    width: 100%;
+
+    @include resp-md {
       width: 40%;
+      margin-top: 0;
     }
   }
 }
@@ -71,17 +86,21 @@
 }
 
 .user-preview.user-preview-card {
-  .user-preview-card-content {
-    margin: 1.5rem 1rem 1rem;
-  }
   margin: 0.5rem 0;
-
   box-shadow: 0 0 0.5rem $box-shadow-color;
   background: white;
   @include flex-row-height-auto;
   @include flex-rows-nowrap;
-  width: 49%;
+  width: 100%;
   display: inline-block;
+
+  @include resp-md {
+    width: 49%;
+  }
+
+  .user-preview-card-content {
+    margin: 1.5rem 1rem 1rem;
+  }
 
   .user-preview-basic-info {
     @include flex-rows-nowrap;

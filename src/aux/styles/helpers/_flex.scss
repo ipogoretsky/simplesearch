@@ -9,6 +9,10 @@
   display: flex;
   flex-flow: nowrap row;
 }
+@mixin flex-cols-wrap() {
+  display: flex;
+  flex-flow: wrap row;
+}
 
 @mixin flex-col-width-auto() {
   width: auto;

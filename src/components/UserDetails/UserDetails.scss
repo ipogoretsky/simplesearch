@@ -8,6 +8,14 @@
   width: 80%;
   margin: 0 auto;
 
+  .shadow-box {
+    padding: 2rem;
+  }
+
+  @include resp-sm {
+    width: 80%;
+  }
+
   &-nav {
     a {
       font-size: fontSize(0.9);
