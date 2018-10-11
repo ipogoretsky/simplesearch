@@ -12,7 +12,7 @@ const states = [landing, userDetails];
 
 states.forEach(state => router.stateRegistry.register(state.default));
 
-router.urlService.rules.otherwise({state: RouterState.Landing, params:{search:''}});
+router.urlService.rules.otherwise({state: RouterState.Landing, params: {search: ''}});
 router.urlService.rules.otherwise({state: RouterState.UserDetails});
 
 router.urlService.rules.otherwise(function ($state) {
