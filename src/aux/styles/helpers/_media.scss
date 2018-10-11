@@ -1,0 +1,29 @@
+@mixin resp-xs {
+  @media (max-width: 575.98px) {
+    @content;
+  }
+}
+
+@mixin resp-sm {
+  @media (min-width: 576px) {
+    @content
+  }
+}
+
+@mixin resp-md {
+  @media (min-width: 768px) {
+    @content
+  }
+}
+
+@mixin resp-lg {
+  @media (min-width: 992px) {
+    @content
+  }
+}
+
+@mixin resp-xl {
+  @media (min-width: 1200px) {
+    @content
+  }
+}

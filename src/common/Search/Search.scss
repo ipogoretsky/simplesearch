@@ -1,7 +1,16 @@
 @import "../../aux/styles/all.scss";
 
 .search {
-  width: 80%;
+  width: 95%;
+
+  @include resp-md {
+    width: 90%;
+  }
+
+  @include resp-lg {
+    width: 80%;
+  }
+
   margin: 0 auto 2rem;
 
   &-control {

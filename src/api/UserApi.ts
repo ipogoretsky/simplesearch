@@ -56,7 +56,6 @@ class UserApi {
     return new Promise<DataModel>((resolve, reject) => {
       let data: DataModel = new DataModel();
 
-
       /* user */
       this.get(`https://api.github.com/users/${login}`)
         .then((res) => {
@@ -73,6 +72,7 @@ class UserApi {
                 data.orgs[user.id] = orgs;
               }).catch((e) => {
               console.log(e);
+              reject(e);
             }),
 
             /* orgs */
@@ -85,6 +85,7 @@ class UserApi {
               })
               .catch((e) => {
                 console.log(e);
+                reject(e);
               })
           ]).then(() => {
             resolve(data);
@@ -93,6 +94,7 @@ class UserApi {
           });
         })
         .catch((e) => {
+          reject(e);
           console.error(e);
         })
     })

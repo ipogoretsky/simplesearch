@@ -15,11 +15,24 @@ a:visited {
 }
 
 .page {
-  width: 50%;
+  width: 95%;
+  transition: width 0.3s ease-in-out;
+
+  box-shadow: 0 rem(10) rem(10) $box-shadow-color;
+  padding: 1rem;
+
+  @include resp-md {
+    width: 70%;
+    padding: 2rem;
+    box-shadow: 0 rem(20) rem(40) $box-shadow-color;
+  }
+
+  @include resp-lg {
+    width: 50%;
+  }
+
   margin: 0 auto;
-  padding: 2rem;
   background: white;
-  box-shadow: 0 rem(20) rem(40) $box-shadow-color;
   position: relative;
 
   &-badge {
@@ -53,3 +66,9 @@ a:visited {
   border-radius: $border-radius;
   box-shadow: 0 0 rem(10) $box-shadow-color;
 }
+
+.loading {
+  background: #f3f5f9 url('./static/spinner.svg') no-repeat center center;
+  background-size: 2rem auto;
+}
+

@@ -6,12 +6,15 @@ import {UIRouterLink} from "../../utils/UIRouterLink";
 import RouterState from "../../routerState";
 import {RepoModel} from "../../models/RepoModel";
 import {OrgModel} from "../../models/OrgModel";
+import {_cs} from "../../utils/helpers";
 
 interface IProps {
   login: string
 }
 
 interface IState {
+  searched: boolean,
+  isPendingSearch: boolean,
   dataModel: DataModel
 }
 
@@ -20,19 +23,44 @@ export default class UserDetails extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
+      searched: false,
+      isPendingSearch: false,
       dataModel: new DataModel()
     }
   }
 
   componentDidMount () {
-    UserApi.loadUser(this.props.login).then((dataModel: DataModel) => {
-      this.setState({dataModel: dataModel})
-    });
+    this.setState({isPendingSearch: true});
+
+    UserApi.loadUser(this.props.login)
+      .then((dataModel: DataModel) => {
+        this.setState({
+          searched: true,
+          dataModel: dataModel
+        })
+      })
+      .catch(() => {
+        console.log("err");
+        this.setState({
+          isPendingSearch: false,
+          searched: true
+        })
+      });
   }
 
   public render () {
-    if (!this.state.dataModel.users.length)
-      return <React.Fragment> </React.Fragment>;
+    if (!this.state.dataModel.users.length) {
+      return <React.Fragment>
+
+        {this.state.isPendingSearch &&
+        <div className='loading'></div>
+        }
+
+        {this.state.searched &&
+        <div className='no-result'>User not found</div>}
+
+      </React.Fragment>;
+    }
 
     return <React.Fragment>
       <div className='user-details'>

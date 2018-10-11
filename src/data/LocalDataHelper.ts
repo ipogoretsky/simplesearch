@@ -36,7 +36,6 @@ class LocalDataHelper {
 
     try {
       this.data = json ? JSON.parse(json) : new LocalData();
-      console.log(this.data);
     } catch (e) {
       this.data = new LocalData();
     }
