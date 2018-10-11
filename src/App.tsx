@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import logo from './logo.png';
 import {SearchResultModel} from "./models/SearchResultModel";
 import {pushStateLocationPlugin, UIRouter, UIView,} from '@uirouter/react';
 import router from "./router";
@@ -18,7 +19,9 @@ class App extends React.Component {
     return (
       <UIRouter plugins={[pushStateLocationPlugin]} router={router}>
         <div className="page">
-          <div className="page-badge"></div>
+          <div className="page-badge">
+            <img src={logo}/>
+          </div>
           <UIView/>
         </div>
       </UIRouter>

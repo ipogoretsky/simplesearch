@@ -27,12 +27,21 @@ a:visited {
     left: 1rem;
     width: rem(80);
     height: rem(75);
-    background: #d8dde6;
     position: relative;
+    background: #d8dde6;
+    background-size: 70% auto;
+
+    img {
+      left: 15%;
+      width: 70%;
+      height: auto;
+      bottom: rem(10);
+      position: absolute;
+    }
   }
 
   &-caption {
-    margin-top:-2rem;
+    margin-top: -2rem;
     font-size: fontSize(1.5);
     text-align: center;
     font-weight: normal;

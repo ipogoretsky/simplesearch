@@ -18,7 +18,7 @@
 
   &-user-preview {
     @include flex-cols-nowrap;
-    padding: 0.8rem 0;
+    padding: 0.8rem 0 2rem 0;
     border-bottom: rem(1) solid rgba(#707070, 0.2);
 
     &-basic-info {

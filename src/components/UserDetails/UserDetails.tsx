@@ -86,6 +86,7 @@ export default class UserDetails extends React.Component<IProps, IState> {
           </div>
 
         </div>
+        <br/>
       </div>
 
     </React.Fragment>;
