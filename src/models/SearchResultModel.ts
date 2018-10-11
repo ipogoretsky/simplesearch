@@ -1,6 +1,3 @@
-import {UserModel} from "./User";
-import {RepoModel} from "./RepoModel";
-
 export class SearchResultModel {
   id: string;
   node_id: string;
@@ -10,8 +7,5 @@ export class SearchResultModel {
   type: string;
   url: string;
   html_url: string;
-  organizations_url:string;
-
-  user: UserModel;
-  repos: RepoModel[] = [];
+  organizations_url: string;
 }

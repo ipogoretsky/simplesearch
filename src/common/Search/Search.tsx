@@ -21,7 +21,7 @@ export class Search extends React.Component<IProps, IState> {
 
     this.state = {
       lastSearch: LocalDataHelper.lastSearch,
-      searchText: this.props.searchText || 'tom'
+      searchText: this.props.searchText || ''
     }
   }
 
@@ -82,9 +82,9 @@ export class Search extends React.Component<IProps, IState> {
 
           <ul className='search-last'>
             <li>Last searches:</li>
-            {this.state.lastSearch.map((s: string) => {
-              return <li key={s}>
-                <UIRouterLink to={RouterState.Landing} params={{searchText: s}}>
+            {this.state.lastSearch.map((s: string, i: number) => {
+              return <li key={s + i}>
+                <UIRouterLink to={RouterState.Landing} params={{search: s}}>
                   {s}
                 </UIRouterLink>
               </li>

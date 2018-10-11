@@ -12,7 +12,12 @@ const states = [landing, userDetails];
 
 states.forEach(state => router.stateRegistry.register(state.default));
 
-router.urlService.rules.initial({state: RouterState.Landing});
+router.urlService.rules.initial({state: RouterState.Landing, params: {search: ''}});
 router.urlService.rules.otherwise({state: RouterState.UserDetails});
+
+router.urlService.rules.otherwise(function ($state) {
+  router.stateService.transitionTo(RouterState.Landing, {search: ''});
+});
+
 
 export default router;

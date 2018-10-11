@@ -1,12 +1,13 @@
 import * as React from "react";
 import './Landing.css';
 import {Search} from "../../common/Search/Search";
-import {SearchResultModel} from "../../models/SearchResultModel";
 import UserApi from "../../api/UserApi";
 import {RepoModel} from "../../models/RepoModel";
 import RouterState from "../../routerState";
 import router from "../../router";
 import {UIRouterLink} from "../../utils/UIRouterLink";
+import {DataModel} from "../../models/DataModel";
+import {UserModel} from "../../models/UserModel";
 
 interface IProps {
   searchText: string | undefined
@@ -14,7 +15,7 @@ interface IProps {
 
 interface IState {
   isPendingSearch: boolean,
-  searchResults: SearchResultModel[]
+  dataModel: DataModel,
 }
 
 export default class Landing extends React.Component<IProps, IState> {
@@ -24,7 +25,7 @@ export default class Landing extends React.Component<IProps, IState> {
 
     this.state = {
       isPendingSearch: false,
-      searchResults: []
+      dataModel: new DataModel()
     }
   }
 
@@ -39,17 +40,17 @@ export default class Landing extends React.Component<IProps, IState> {
   }
 
   private onSearch (searchText: string | undefined) {
-    router.stateService.go(RouterState.Landing, {searchText: searchText});
+    router.stateService.go(RouterState.Landing, {search: searchText});
   }
 
   private search (searchText: string | undefined) {
-    this.setState({isPendingSearch: true});
+    this.setState({isPendingSearch: !!searchText});
 
     UserApi.search(searchText)
-      .then((results: SearchResultModel[]) => {
+      .then((dataModel: DataModel) => {
         this.setState({
           isPendingSearch: false,
-          searchResults: results
+          dataModel: dataModel
         });
 
       }).catch((e) => {
@@ -72,28 +73,28 @@ export default class Landing extends React.Component<IProps, IState> {
         <h4>GitHub most popular users</h4>
         <div className="shadow-box">
 
-          {!this.state.searchResults.length && !this.state.isPendingSearch &&
+          {!this.state.dataModel.users && !this.state.isPendingSearch &&
           <div><h5>No Result</h5></div>
           }
 
-          {this.state.searchResults.map((sr: SearchResultModel) => {
+          {this.state.dataModel.users.map((user: UserModel) => {
             return (
-              <div key={sr.id} className='user-preview'>
+              <div key={user.id} className='user-preview'>
 
                 <div className='user-preview-basic-info'>
-                  <img src={sr.avatar_url}/>
+                  <img src={user.avatar_url}/>
                   <div>
-                    <UIRouterLink to={RouterState.UserDetails} params={{id: sr.user.id}}>
-                      {sr.user.name}
+                    <UIRouterLink to={RouterState.UserDetails} params={{login: user.login}}>
+                      {user.name}
                     </UIRouterLink><br/>
-                    <span>{sr.user.type} </span>
+                    <span>{user.type} </span>
                   </div>
                 </div>
 
                 <div className='user-preview-repos'>
                   <div>REPOSITORIES</div>
 
-                  {sr.repos.map((rep: RepoModel, i: number) => {
+                  {this.state.dataModel.repos[user.id].map((rep: RepoModel, i: number) => {
                     return (<div key={rep.id}>
                       <a target="_blank"
                          href={rep.html_url}>{rep.name}</a>

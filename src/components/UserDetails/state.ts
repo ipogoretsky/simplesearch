@@ -3,11 +3,11 @@ import UserDetails from "./UserDetails";
 
 export default {
   name: RouterState.UserDetails,
-  url: '/user/:id',
+  url: '/user/:login',
   component: UserDetails,
   resolve: [{
-    token: 'userId',
+    token: 'login',
     deps: ['$transition$'],
-    resolveFn: (trans) => trans.params().id
+    resolveFn: (trans) => trans.params().login
   }]
 };
