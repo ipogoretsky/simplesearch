@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './App.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 import logo from './logo.png';
 import {SearchResultModel} from "./models/SearchResultModel";
 import {pushStateLocationPlugin, UIRouter, UIView,} from '@uirouter/react';

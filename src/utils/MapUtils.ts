@@ -91,11 +91,11 @@ export default class MapUtils {
                   let nestedObj = this.deserialize(metadata.clazz!, json[prop][i]);
                   instance[prop].push(nestedObj);
                 } catch (e) {
-                //   console.log('MapUtils.deserialize error:',
-                //     'curJPorop:', curJProp,
-                //     'prop:', prop,
-                //     'metadata:', metadata,
-                //     'error:', e);
+                  //   console.log('MapUtils.deserialize error:',
+                  //     'curJPorop:', curJProp,
+                  //     'prop:', prop,
+                  //     'metadata:', metadata,
+                  //     'error:', e);
                 }
               }
             }

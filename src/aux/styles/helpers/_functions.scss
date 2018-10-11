@@ -26,6 +26,6 @@ $browser-context: 16;
   @return $pixels / $context * 1em;
 }
 
-@function fontSize($scale:1){
+@function fontSize($scale:1) {
   @return $scale * $font-size;
 }
