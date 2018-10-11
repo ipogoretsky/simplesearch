@@ -76,10 +76,6 @@ export class Search extends React.Component<IProps, IState> {
             </button>
           </div>
 
-          {this.props.isPending &&
-          <div>searching...</div>
-          }
-
           <ul className='search-last'>
             <li>Last searches:</li>
             {this.state.lastSearch.map((s: string, i: number) => {

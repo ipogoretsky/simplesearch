@@ -1,4 +1,5 @@
 import LocalData from "./LocalData";
+import {UserPreviewMode} from "../common/UserPreview/UserPreview";
 
 const LOCAL_STORAGE_KEY: string = '__DataKey';
 
@@ -7,6 +8,15 @@ class LocalDataHelper {
 
   constructor () {
     this.read();
+  }
+
+  public get userPreviewMode (): UserPreviewMode {
+    return this.data.userPreviewMode;
+  }
+
+  public set userPreviewMode (mode: UserPreviewMode) {
+    this.data.userPreviewMode = mode;
+    this.save();
   }
 
   public get lastSearch (): string[] {
@@ -26,6 +36,7 @@ class LocalDataHelper {
 
     try {
       this.data = json ? JSON.parse(json) : new LocalData();
+      console.log(this.data);
     } catch (e) {
       this.data = new LocalData();
     }

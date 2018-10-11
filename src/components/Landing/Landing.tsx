@@ -8,6 +8,7 @@ import {DataModel} from "../../models/DataModel";
 import {UserModel} from "../../models/UserModel";
 import {UserPreview, UserPreviewMode} from "../../common/UserPreview/UserPreview";
 import {_cs} from "../../utils/helpers";
+import LocalDataHelper from "../../data/LocalDataHelper";
 
 interface IProps {
   searchText: string | undefined
@@ -15,6 +16,7 @@ interface IProps {
 
 interface IState {
   mode: UserPreviewMode,
+  searched: boolean,
   isPendingSearch: boolean,
   dataModel: DataModel,
 }
@@ -25,7 +27,8 @@ export default class Landing extends React.Component<IProps, IState> {
     super(props);
 
     this.state = {
-      mode: UserPreviewMode.Card,
+      searched: false,
+      mode: LocalDataHelper.userPreviewMode,
       isPendingSearch: false,
       dataModel: new DataModel()
     }
@@ -49,11 +52,12 @@ export default class Landing extends React.Component<IProps, IState> {
   }
 
   private search (searchText: string | undefined) {
-    this.setState({isPendingSearch: !!searchText});
+    this.setState({isPendingSearch: true});
 
     UserApi.search(searchText)
       .then((dataModel: DataModel) => {
         this.setState({
+          searched: true,
           isPendingSearch: false,
           dataModel: dataModel
         });
@@ -61,12 +65,13 @@ export default class Landing extends React.Component<IProps, IState> {
       }).catch((e) => {
 
       this.setState({
-        isPendingSearch: false
+        isPendingSearch: false,
       });
     })
   }
 
   private toggleMode (mode: UserPreviewMode) {
+    LocalDataHelper.userPreviewMode = mode;
     this.setState({mode: mode});
   }
 
@@ -78,48 +83,57 @@ export default class Landing extends React.Component<IProps, IState> {
               searchText={this.props.searchText}
               onSearch={(s: string) => this.onSearch(s)}/>
 
-      <div className='search-result'>
-        <div className='toolbar'>
-          <div className='toolbar-text'>
-            GitHub most popular users
-          </div>
+      {this.state.isPendingSearch &&
+      <div className='spinner-bar'>
+        <div className='spinner'>Searching...</div>
+      </div>
+      }
 
-          <div className='toolbar-buttons'>
+      {/*Toolbar*/}
+      <div className='toolbar'>
+        <div className='toolbar-text'>
+          GitHub most popular users
 
-            <div className={_cs('toolbar-button',
-              {'toolbar-button-active': this.state.mode == UserPreviewMode.Default})}
-                 onClick={() => this.toggleMode(UserPreviewMode.Default)}>
-
-              <span className='fa fa-list-ul'/>
-            </div>
-            <div className={_cs('toolbar-button',
-              {'toolbar-button-active': this.state.mode == UserPreviewMode.Card})}
-                 onClick={() => this.toggleMode(UserPreviewMode.Card)}>
-
-              <span className='fa fa-table'/>
-            </div>
-          </div>
+          {this.state.searched &&
+          <div>Found:{this.state.dataModel.users.length} users</div>
+          }
         </div>
 
-        <div className="shadow-box">
+        <div className='toolbar-buttons'>
+          <div className={_cs('toolbar-button',
+            {'toolbar-button-active': this.state.mode == UserPreviewMode.Default})}
+               onClick={() => this.toggleMode(UserPreviewMode.Default)}>
 
-          {!this.state.dataModel.users.length && !this.state.isPendingSearch &&
-          <div><h5>No Result</h5></div>
-          }
-
-          <div className={_cs({
-            'user-list-cards': this.state.mode == UserPreviewMode.Card
-          })}>
-            {this.state.dataModel.users.map((user: UserModel) => {
-              return (
-                <UserPreview
-                  key={user.id}
-                  mode={this.state.mode}
-                  user={user}
-                  repos={this.state.dataModel.repos[user.id]}/>
-              )
-            })}
+            <span className='fa fa-list-ul'/>
           </div>
+          <div className={_cs('toolbar-button',
+            {'toolbar-button-active': this.state.mode == UserPreviewMode.Card})}
+               onClick={() => this.toggleMode(UserPreviewMode.Card)}>
+
+            <span className='fa fa-table'/>
+          </div>
+        </div>
+      </div>
+
+      {/*Users List*/}
+      <div className="shadow-box">
+
+        {!this.state.isPendingSearch && this.state.searched && !this.state.dataModel.users.length &&
+        <div className='no-result'>Users not found...</div>
+        }
+        <div className={_cs({
+          'user-list-cards': this.state.mode == UserPreviewMode.Card
+        })}>
+
+          {this.state.dataModel.users.map((user: UserModel) => {
+            return (
+              <UserPreview
+                key={user.id}
+                mode={this.state.mode}
+                user={user}
+                repos={this.state.dataModel.repos[user.id]}/>
+            )
+          })}
         </div>
       </div>
     </React.Fragment>);

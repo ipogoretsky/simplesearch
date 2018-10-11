@@ -6,8 +6,8 @@ import RouterState from "../../routerState";
 import {UIRouterLink} from "../../utils/UIRouterLink";
 
 export enum UserPreviewMode {
-  Default,
-  Card
+  Default = 1,
+  Card = 2
 }
 
 interface IProps {
