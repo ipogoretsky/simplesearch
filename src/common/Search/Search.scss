@@ -1,0 +1,47 @@
+@import "../../aux/styles/all.scss";
+
+.search {
+  width: 80%;
+  margin: 0 auto 2rem;
+
+  &-control {
+    @include flex-cols-nowrap;
+
+    &-input {
+      @include flex-col-width-fill();
+    }
+
+    &-button {
+      margin-left: 0.3rem;
+      @include flex-col-width-auto();
+    }
+
+  }
+
+  &-last {
+    padding: 0 0 0 $input-padding-x;
+    margin: 0.5rem 0;
+    text-align: left;
+    list-style-type: none;
+    white-space: nowrap;
+
+    li {
+      color: $link-color;
+      font-size: 0.9 * $font-size;
+      padding-right: 1rem;
+      display: inline-block;
+      padding-right: 1rem;
+
+      &:first-child {
+        padding: 0 0.4rem 0 0;
+        color: rgba($text-color, 0.5);
+      }
+
+      &:not(first-child) {
+        max-width: 30%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

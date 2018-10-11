@@ -3,6 +3,7 @@ import {RepoModel} from "./RepoModel";
 
 export class SearchResultModel {
   id: string;
+  node_id: string;
   login: string;
   avatar_url: string;
   repos_url: string;

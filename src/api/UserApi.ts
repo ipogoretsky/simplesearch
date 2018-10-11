@@ -30,6 +30,7 @@ class UserApi {
               .set('accept', 'json')
               .then((res) => {
                 sr.repos = MapUtils.deserializeCollection(RepoModel, res.body.slice(0, 3));
+                sr.repos.sort((a:RepoModel, b:RepoModel)=>a.name.length - b.name.length);
               }).catch((e) => {
                 console.error(e);
               }))
